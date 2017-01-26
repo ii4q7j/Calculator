@@ -1,5 +1,51 @@
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 /**
  * Created by dmitriybala on 26.01.17.
  */
 public class CalculatorTest {
+
+    @Test
+    public void plusTest() {
+        assertEquals(3,
+                Calculator.calculate(1.0, '+', 2.0));
+
+    }
+
+    @Test
+    public void minusTest() {
+        assertEquals(-1,
+                Calculator.calculate(4.0, '-', 5.0));
+    }
+
+    @Test
+    public void devideTest() {
+        assertEquals(5,
+                Calculator.calculate(200.0, '/', 39.5));
+    }
+
+    @Test
+    public void multiplyTest() {
+        assertEquals(900,
+                Calculator.calculate(300.0, '*', 3.0));
+    }
+
+    @Test(expected = CalculatorException.class)
+    public void wrongOperandTest() {
+        Calculator.calculate(1.0, '_', 2.0);
+    }
+
+    @Test(expected = CalculatorException.class)
+    public void numberIsTooBigTest() {
+        Calculator.calculate(100000000.0, '+', 1.0);
+    }
+
+    @Test(expected = CalculatorException.class)
+    public void numberIsTooBigNegativeTest() {
+        Calculator.calculate(-100000000.0, '-', 1.0);
+    }
+
+
 }
