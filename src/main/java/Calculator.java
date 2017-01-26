@@ -22,7 +22,7 @@ public class Calculator {
                 result = (int) (numberOne / numberTwo);
                 break;
             default:
-                result = Integer.MIN_VALUE;
+                throw new CalculatorException("Unsupported operator");
         }
 
         if (result.toString().length() > 8) {
