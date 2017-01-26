@@ -26,8 +26,7 @@ public class Calculator {
         }
 
         if (result.toString().length() > 8) {
-            System.out.println("Result is too big to show");
-            return Integer.MIN_VALUE;
+            throw new CalculatorException("Result is too big");
         }
 
         return result;
