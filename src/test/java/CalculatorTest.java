@@ -9,16 +9,15 @@ public class CalculatorTest {
 
     @Test
     public void plusTest() {
-        assertEquals(0,
-                Calculator.calculate(-999999999.999999999, '+', 1000000000));
+        assertEquals(99999999,
+                Calculator.calculate(-999999999.99999999, '+', 999999999.99999999 + 99999999.49));
 
     }
 
-    
     @Test
     public void minusTest() {
         assertEquals(99999999,
-                Calculator.calculate(100000000.999999999, '-', 2));
+                Calculator.calculate(99999999.999999999, '-', 1.5));
     }
 
     @Test
@@ -51,6 +50,12 @@ public class CalculatorTest {
     @Test(expected = CalculatorException.class)
     public void zeroDivision() {
         Calculator.calculate(((Math.random() * Double.MAX_VALUE) - Double.MAX_VALUE / 2), '/', 0);
+    }
+
+    @Test
+    public void zeroMultiplyTest() {
+        assertEquals(0,
+                Calculator.calculate(((Math.random() * Double.MAX_VALUE) - Double.MAX_VALUE / 2), '*', 0.0));
     }
 
 
