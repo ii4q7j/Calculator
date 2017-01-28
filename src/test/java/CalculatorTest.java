@@ -9,19 +9,20 @@ public class CalculatorTest {
 
     @Test
     public void plusTest() {
-        assertEquals(3,
-                Calculator.calculate(1.0, '+', 2.0));
+        assertEquals(0,
+                Calculator.calculate(-999999999.999999999, '+', 1000000000));
 
     }
 
+    
     @Test
     public void minusTest() {
-        assertEquals(-1,
-                Calculator.calculate(4.0, '-', 5.0));
+        assertEquals(99999999,
+                Calculator.calculate(100000000.999999999, '-', 2));
     }
 
     @Test
-    public void devideTest() {
+    public void divideTest() {
         assertEquals(5,
                 Calculator.calculate(200.0, '/', 39.5));
     }
@@ -45,6 +46,11 @@ public class CalculatorTest {
     @Test(expected = CalculatorException.class)
     public void numberIsTooBigNegativeTest() {
         Calculator.calculate(-100000000.0, '-', 1.0);
+    }
+
+    @Test(expected = CalculatorException.class)
+    public void zeroDivision() {
+        Calculator.calculate(((Math.random() * Double.MAX_VALUE) - Double.MAX_VALUE / 2), '/', 0);
     }
 
 

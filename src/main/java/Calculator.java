@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Created by dmitriybala on 26.01.17.
  */
@@ -12,15 +15,25 @@ public class Calculator {
             case '+':
                 result = Math.round(numberOne + numberTwo);
                 break;
+
             case '-':
                 result = Math.round(numberOne - numberTwo);
                 break;
+
             case '*':
                 result = Math.round(numberOne * numberTwo);
                 break;
+
             case '/':
+
+                if (numberTwo == 0) {
+                    throw new CalculatorException("Can't divide zero");
+                }
+
                 result = Math.round(numberOne / numberTwo);
+
                 break;
+
             default:
                 throw new CalculatorException("Unsupported operator");
         }
@@ -31,6 +44,16 @@ public class Calculator {
 
         return result;
 
+
+    }
+
+    public static void main(String[] args) {
+
+        if (args.length != 3) {
+            System.exit(1);
+        }
+
+        System.out.println(Calculator.calculate(Double.parseDouble(args[0]), args[1].charAt(0), Double.parseDouble(args[2])));
 
     }
 }
