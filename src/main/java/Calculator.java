@@ -4,28 +4,28 @@
 public class Calculator {
 
 
-    public static int calculate(Double numberOne, Character operand, Double numberTwo) {
+    public static long calculate(double numberOne, char operand, double numberTwo) {
 
-        Integer result;
+        long result;
 
         switch (operand) {
             case '+':
-                result = (int) (numberOne + numberTwo);
+                result = Math.round(numberOne + numberTwo);
                 break;
             case '-':
-                result = (int) (numberOne - numberTwo);
+                result = Math.round(numberOne - numberTwo);
                 break;
             case '*':
-                result = (int) (numberOne * numberTwo);
+                result = Math.round(numberOne * numberTwo);
                 break;
             case '/':
-                result = (int) (numberOne / numberTwo);
+                result = Math.round(numberOne / numberTwo);
                 break;
             default:
                 throw new CalculatorException("Unsupported operator");
         }
 
-        if (result.toString().length() > 8) {
+        if (String.valueOf(result).length() > 8) {
             throw new CalculatorException("Result is too big");
         }
 
